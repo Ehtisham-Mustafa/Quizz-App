@@ -51,28 +51,21 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
-  void _answerQuestion() {
-    setState(() {
-      _questionIndex = _questionIndex + 1;
-    });
-    print(_questionIndex);
+  void _answerQuestion(int score) {
     if (_questionIndex < _questions.length) {
-      print('We have more questions');
-    } else {
-      print('No more questions');
+      _totalScore += score;
+      setState(() {
+        _questionIndex++;
+      });
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    // var dummy = ['heelo'];
-    // dummy.add('world');
-    // print(dummy);
-
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('My First App'),
+          title: Text('My First Quiz App'),
         ),
         body: _questionIndex < _questions.length
             ? Quiz(
